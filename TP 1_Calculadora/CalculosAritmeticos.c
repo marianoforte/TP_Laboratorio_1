@@ -7,7 +7,7 @@
 #include <ctype.h>
 #include "CalculosAritmeticos.h"
 
-/** \brief Recibe los datos ingresado y los valida para reconocer si es de tipo numérico o caracter
+/** \brief Recibe los datos ingresados y los valida para reconocer si es de tipo numérico o caracter
  * \param If condiciona el ingreso de caracteres obtenidos por el scanf a sólo números, si devuelve 1 no se cumplió con
           el formato especificado y muestra un mensaje al usuario aclarando lo que sucede y luego limpia el búfer del teclado
           para que la próxima llamada del scanf pause el programa
@@ -39,7 +39,6 @@ int ValidarDato(const char* floatMask, void* variable)
           haga una pausa en el sistema y devuelva 0
  * \return Retorna 1 en caso que el dato ingresado sea de tipo entero
  */
-
 int ValidarOpcion(char opcion[])
 {
     int i;
