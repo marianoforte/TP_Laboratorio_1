@@ -33,6 +33,13 @@ int ValidarDato(const char* floatMask, void* variable)
     return 0;
 }
 
+/** \brief Recibe los datos ingresados por el usuario para validar la opcion elegida
+ * \param For realiza una iteración comparando el índice con el largo de la cadena ingresada.
+ * \param If crea una condición donde si el dato ingresado no es de tipo entero muestre un mensaje de error,
+          haga una pausa en el sistema y devuelva 0
+ * \return Retorna 1 en caso que el dato ingresado sea de tipo entero
+ */
+
 int ValidarOpcion(char opcion[])
 {
     int i;

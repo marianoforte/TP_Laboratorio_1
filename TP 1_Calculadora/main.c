@@ -205,7 +205,7 @@ int main()
     printf("\n-------------------------------------------------------------------------------\n");
     printf("\nGracias por utlizar la aplicaci%cn.\n",162);
     printf("\nEscrita y dise%cada por Mariano Forte.\n",164);
-    printf("\nVersi%cn 3.7\n\n",162);
+    printf("\nVersi%cn 3.8\n\n",162);
     printf("-------------------------------------------------------------------------------\n\n");
     return 0;
 }
