@@ -47,13 +47,12 @@ int ValidarOpcion(char opcion[])
         if(!(isdigit(opcion[i])))
         {
             printf("\nIngrese s%clo n%cmeros del 1 al 5 por favor.\n\n", 162,163);
-            system("pause");
+            system("pause\n");
             return 0;
         }
     }
     return 1;
 }
-
 
 /**
  * \brief Recibe los números ingresados por el usuario y los suma

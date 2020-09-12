@@ -11,8 +11,8 @@ int main()
 {
     float primerNumero;
     float segundoNumero;
-    char opcion[128];
-    int condicionOpcion;
+    char opcion[2];
+    int validacionOpcion;
     int opcionIngresada;
     float suma;
     float resta;
@@ -30,43 +30,43 @@ int main()
     salir = 'n';
 
     do{
+        system("cls");
+        printf("\n ______________________________________________");
+        printf("\n|                                              |");
+        printf("\n|**************CALCULADORA*********************|");
+        printf("\n|______________________________________________|\n\n");
+        if(flagPrimerNumero == 0)
+        {
+            printf("\n1- Ingresar 1er operando (A)\n");
+        }
+        else
+        {
+            printf("\n1- Ingresar 1er operando (A = %.2f)\n",primerNumero);
+        }
+        if(flagSegundoNumero == 0)
+        {
+            printf("2- Ingresar 2do operando (B)\n");
+        }
+        else
+        {
+            printf("2- Ingresar 2do operando (B = %.2f)\n",segundoNumero);
+        }
+        printf("3- Calcular todas las operaciones\n");
+        printf("    a) Calcular la suma (A+B)\n");
+        printf("    b) Calcular la resta (A-B)\n");
+        printf("    c) Calcular la multiplicaci%cn (A*B)\n",162);
+        printf("    d) Calcular la divisi%cn (A/B)\n",162);
+        printf("    e) Calcular factoriales (A!) y (B!)\n");
+        printf("4- Mostrar resultados\n");
+        printf("5- Salir\n");
         do
         {
-            system("cls");
-            printf("\n ______________________________________________");
-            printf("\n|                                              |");
-            printf("\n|**************CALCULADORA*********************|");
-            printf("\n|______________________________________________|\n\n");
-            if(flagPrimerNumero == 0)
-            {
-                printf("\n1- Ingresar 1er operando (A)\n");
-            }
-            else
-            {
-                printf("\n1- Ingresar 1er operando (A = %.2f)\n",primerNumero);
-            }
-            if(flagSegundoNumero == 0)
-            {
-                printf("2- Ingresar 2do operando (B)\n");
-            }
-            else
-            {
-                printf("2- Ingresar 2do operando (B = %.2f)\n",segundoNumero);
-            }
-            printf("3- Calcular todas las operaciones\n");
-            printf("    a) Calcular la suma (A+B)\n");
-            printf("    b) Calcular la resta (A-B)\n");
-            printf("    c) Calcular la multiplicaci%cn (A*B)\n",162);
-            printf("    d) Calcular la divisi%cn (A/B)\n",162);
-            printf("    e) Calcular factoriales (A!) y (B!)\n");
-            printf("4- Mostrar resultados\n");
-            printf("5- Salir\n\n");
-            printf("Opcion: ");
+            printf("\nIngrese una opcion: ");
             fflush(stdin);
             scanf("%s",opcion);
-            condicionOpcion = ValidarOpcion(opcion);
-        }while(condicionOpcion == 0);
-        opcionIngresada=atoi(opcion);
+            validacionOpcion = ValidarOpcion(opcion);
+        }while(validacionOpcion == 0);
+        opcionIngresada = atoi(opcion);
         switch(opcionIngresada)
         {
             case 1:
@@ -205,7 +205,7 @@ int main()
     printf("\n-------------------------------------------------------------------------------\n");
     printf("\nGracias por utlizar la aplicaci%cn.\n",162);
     printf("\nEscrita y dise%cada por Mariano Forte.\n",164);
-    printf("\nVersi%cn 3.9\n\n",162);
+    printf("\nVersi%cn 4.0\n\n",162);
     printf("-------------------------------------------------------------------------------\n\n");
     return 0;
 }
