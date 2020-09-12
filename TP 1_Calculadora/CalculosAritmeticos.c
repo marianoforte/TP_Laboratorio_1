@@ -33,6 +33,22 @@ int ValidarDato(const char* floatMask, void* variable)
     return 0;
 }
 
+int ValidarOpcion(char opcion[])
+{
+    int i;
+    for(i=0; i<strlen(opcion); i++)
+    {
+        if(!(isdigit(opcion[i])))
+        {
+            printf("\nIngrese s%clo n%cmeros del 1 al 5 por favor.\n\n", 162,163);
+            system("pause");
+            return 0;
+        }
+    }
+    return 1;
+}
+
+
 /**
  * \brief Recibe los números ingresados por el usuario y los suma
  * \param Suma es la variable que adquiere la adición de ambos números

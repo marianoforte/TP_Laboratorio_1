@@ -1,6 +1,9 @@
 /**< Prototipo de la función de validación de dato ingresado */
 int ValidarDato(const char*, void*);
 
+/**< Prototipo de la función de validación de opciones */
+int ValidarOpcion(char[]);
+
 /**< Prototipo de la función de adición */
 float SumaOperandos(float, float);
 
