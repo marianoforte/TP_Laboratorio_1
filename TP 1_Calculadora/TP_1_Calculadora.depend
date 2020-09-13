@@ -85,3 +85,25 @@
 	<ctype.h>
 	"CalculosAritmeticos.h"
 
+1599938395 source:c:\users\maria\onedrive\escritorio\utn fra\1er cuatrimestre\laboratorio 1 - programación 1\tp_laboratorio_1\tp 1_calculadora\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	<string.h>
+	<ctype.h>
+	"CalculosAritmeticos.h"
+
+1599937953 c:\users\maria\onedrive\escritorio\utn fra\1er cuatrimestre\laboratorio 1 - programación 1\tp_laboratorio_1\tp 1_calculadora\calculosaritmeticos.h
+
+1599957093 source:c:\users\maria\onedrive\escritorio\utn fra\1er cuatrimestre\laboratorio 1 - programación 1\tp_laboratorio_1\tp 1_calculadora\calculosaritmeticos.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	<windows.h>
+	<string.h>
+	<ctype.h>
+	"CalculosAritmeticos.h"
+

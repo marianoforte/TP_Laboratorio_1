@@ -187,9 +187,10 @@ int main()
                         }
                     }
                 }
-
                 printf("\n-------------------------------------------------------------------------------\n");
                 printf("\n");
+                flagPrimerNumero = 0;
+                flagSegundoNumero = 0;
                 system("pause");
                 break;
             case 5:
@@ -205,7 +206,7 @@ int main()
     printf("\n-------------------------------------------------------------------------------\n");
     printf("\nGracias por utlizar la aplicaci%cn.\n",162);
     printf("\nEscrita y dise%cada por Mariano Forte.\n",164);
-    printf("\nVersi%cn 4.0\n\n",162);
+    printf("\nVersi%cn 4.1\n\n",162);
     printf("-------------------------------------------------------------------------------\n\n");
     return 0;
 }
