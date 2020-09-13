@@ -14,7 +14,6 @@
  * \param If verifica si el búfer del teclado quedó sucio y luego lo limpia
  * \return Retorna 0 en caso que no ingrese en la iteración, validando que el dato ingresado es de tipo numérico
  */
-
 int ValidarDato(const char* floatMask, void* variable)
 {
     int caracter;
