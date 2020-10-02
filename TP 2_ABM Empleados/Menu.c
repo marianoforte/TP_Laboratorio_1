@@ -5,8 +5,7 @@
 #include "ArrayEmployees.h"
 #include "Input&Validation.h"
 #include "ConsoleOutputStyle.h"
-#define SIZE 3
-
+#define SIZE 1000
 
 void mainMenu(void)
 {
@@ -19,7 +18,6 @@ void mainMenu(void)
     initArrayAsEmpty(employeesListing, SIZE);
     do
     {
-        system("color F0");
         Color(WHITE,BLUE);
         printf("\n                    _____________________________________________");
         printf("\n                   |                                             |");
@@ -119,7 +117,7 @@ void mainMenu(void)
             Color(WHITE,BLUE);
             printf("------------------------------------------------------------------------------------\n");
             Color(WHITE,GREEN);
-            printf("\n                         Gracias por utilizar la aplicaci%cn.\n\n                       Dise%co y desarrollo por Mariano Forte.\n\n                                    Version 4.8\n",162,164);
+            printf("\n                         Gracias por utilizar la aplicaci%cn.\n\n                       Dise%co y desarrollo por Mariano Forte.\n\n                                    Version 4.8.1\n",162,164);
             Color(WHITE,BLUE);
             printf("\n------------------------------------------------------------------------------------\n");
             Color(WHITE,BLACK);
