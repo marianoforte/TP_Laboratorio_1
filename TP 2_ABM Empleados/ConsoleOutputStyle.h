@@ -20,6 +20,13 @@ enum Colors { // Listado de colores (La letra "L" al inicio, indica que es un co
  WHITE = 15
 };
 
-void Color(int background, int text);
+/** \brief Changes the text colour and background
+ *
+ * \param background It is the background colour value
+ * \param text It is the text colour value
+ * \return The font colour and background change
+ *
+ */
+void Colour(int background, int text);
 
 #endif // CONSOLEOUTPUTSTYLE_H_INCLUDED

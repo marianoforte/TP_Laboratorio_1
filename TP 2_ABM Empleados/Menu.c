@@ -18,12 +18,12 @@ void mainMenu(void)
     initArrayAsEmpty(employeesListing, SIZE);
     do
     {
-        Color(WHITE,BLUE);
+        Colour(WHITE,BLUE);
         printf("\n                    _____________________________________________");
         printf("\n                   |                                             |");
         printf("\n                   |*********ADMINISTRACION DE EMPLEADOS*********|");
         printf("\n                   |_____________________________________________|\n\n");
-        Color(WHITE,BLACK);
+        Colour(WHITE,BLACK);
         option = getInt("\nSelecciona una opcion\n\n1. ALTA\n2. MODIFICAR\n3. BAJA\n4. INFORMAR\n   -Lista de empleados por apellido y sector en orden ascendente\n   -Promedio de todos los salarios\n0. SALIR\n\nIngrese una opcion: ");
         switch(option)
         {
@@ -31,13 +31,13 @@ void mainMenu(void)
             freeRowEmployeesList = searchListingFirstEmptyPlace(employeesListing, SIZE);
             if(freeRowEmployeesList == -1 || freeRowEmployeesList == SIZE)
             {
-                Color(WHITE,BLUE);
+                Colour(WHITE,BLUE);
                 printf("\n\n------------------------------------------------------------------------------------\n\n");
-                Color(WHITE,RED);
+                Colour(WHITE,RED);
                 printf("\n\nEl listado esta lleno. Elimina alg%cn empleado para ingresar uno nuevo\n\n",163);
-                Color(WHITE,BLUE);
+                Colour(WHITE,BLUE);
                 printf("\n\n------------------------------------------------------------------------------------\n\n");
-                Color(WHITE,BLACK);
+                Colour(WHITE,BLACK);
             }
             else
             {
@@ -45,13 +45,13 @@ void mainMenu(void)
                 employeesListing[freeRowEmployeesList] = getEmployee(employeesListing[freeRowEmployeesList]);
                 employeesListing[freeRowEmployeesList].isEmpty = changeIsEmptyState(employeesListing[freeRowEmployeesList]);
                 employeesListing[freeRowEmployeesList].id = lastId;
-                Color(WHITE,BLUE);
+                Colour(WHITE,BLUE);
                 printf("\n\n------------------------------------------------------------------------------------\n\n");
-                Color(WHITE,MAGENTA );
+                Colour(WHITE,MAGENTA );
                 printf("Se le ha asignado la ID %04d.",lastId);
-                Color(WHITE,BLUE);
+                Colour(WHITE,BLUE);
                 printf("\n\n------------------------------------------------------------------------------------\n\n");
-                Color(WHITE,BLACK);
+                Colour(WHITE,BLACK);
             }
             system("pause");
             system("cls");
@@ -59,13 +59,13 @@ void mainMenu(void)
         case 2://MODIFICAR
             if(lastId == 0)
             {
-                Color(WHITE,BLUE);
+                Colour(WHITE,BLUE);
                 printf("\n\n------------------------------------------------------------------------------------\n\n");
-                Color(WHITE,RED);
+                Colour(WHITE,RED);
                 printf("\nNo se han ingresado empleados hasta el momento.\n");
-                Color(WHITE,BLUE);
+                Colour(WHITE,BLUE);
                 printf("\n\n------------------------------------------------------------------------------------\n\n");
-                Color(WHITE,BLACK);
+                Colour(WHITE,BLACK);
             }
             else
             {
@@ -77,15 +77,13 @@ void mainMenu(void)
         case 3://BAJA
             if(lastId == 0)
             {
-                Color(WHITE,BLUE);
+                Colour(WHITE,BLUE);
                 printf("\n\n------------------------------------------------------------------------------------\n\n");
-                Color(WHITE,BLACK);
-                Color(WHITE,RED);
+                Colour(WHITE,RED);
                 printf("\nNo se han ingresado empleados hasta el momento.\n");
-                Color(WHITE,BLACK);
-                Color(WHITE,BLUE);
+                Colour(WHITE,BLUE);
                 printf("\n\n------------------------------------------------------------------------------------\n\n");
-                Color(WHITE,BLACK);
+                Colour(WHITE,BLACK);
             }
             else
             {
@@ -97,13 +95,13 @@ void mainMenu(void)
         case 4://MOSTRAR
             if(lastId == 0)
             {
-                Color(WHITE,BLUE);
+                Colour(WHITE,BLUE);
                 printf("\n\n------------------------------------------------------------------------------------\n\n");
-                Color(WHITE,RED);
+                Colour(WHITE,RED);
                 printf("\nNo se han ingresado empleados hasta el momento.\n");
-                Color(WHITE,BLUE);
+                Colour(WHITE,BLUE);
                 printf("\n\n------------------------------------------------------------------------------------\n\n");
-                Color(WHITE,BLACK);
+                Colour(WHITE,BLACK);
             }
             else
             {
@@ -114,19 +112,19 @@ void mainMenu(void)
             system("cls");
         case 0: //SALIR
             printf("\n\n");
-            Color(WHITE,BLUE);
+            Colour(WHITE,BLUE);
             printf("------------------------------------------------------------------------------------\n");
-            Color(WHITE,GREEN);
-            printf("\n                         Gracias por utilizar la aplicaci%cn.\n\n                       Dise%co y desarrollo por Mariano Forte.\n\n                                    Version 4.8.1\n",162,164);
-            Color(WHITE,BLUE);
+            Colour(WHITE,GREEN);
+            printf("\n                         Gracias por utilizar la aplicaci%cn.\n\n                       Dise%co y desarrollo por Mariano Forte.\n\n                                    Version 4.8.2\n",162,164);
+            Colour(WHITE,BLUE);
             printf("\n------------------------------------------------------------------------------------\n");
-            Color(WHITE,BLACK);
+            Colour(WHITE,BLACK);
             system("pause");
             break;
         default:
-            Color(WHITE,RED);
+            Colour(WHITE,RED);
             printf("Opci%cn inv%clida. Elija nuevamente.\n\n",162,160);
-            Color(WHITE,BLACK);
+            Colour(WHITE,BLACK);
             system("pause");
             system("cls");
             break;
