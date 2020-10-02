@@ -115,6 +115,14 @@ void mainMenu(void)
             system("pause");
             system("cls");
         case 0: //SALIR
+            printf("\n\n");
+            Color(WHITE,BLUE);
+            printf("------------------------------------------------------------------------------------\n");
+            Color(WHITE,GREEN);
+            printf("\nGracias por utilizar la aplicaci%cn.\n\nDise%co y desarrollo por Mariano Forte.\n\nVersion 4.7\n",162,164);
+            Color(WHITE,BLUE);
+            printf("\n------------------------------------------------------------------------------------\n");
+            Color(WHITE,BLACK);
             break;
         default:
             Color(WHITE,RED);
@@ -125,12 +133,5 @@ void mainMenu(void)
             break;
         }
     }while(option!=0);
-    printf("\n\n");
-    Color(WHITE,BLUE);
-    printf("------------------------------------------------------------------------------------\n");
-    Color(WHITE,GREEN);
-    printf("\nGracias por utilizar la aplicaci%cn.\n\nDise%co y desarrollo por Mariano Forte.\n\nVersion 4.6\n",162,164);
-    Color(WHITE,BLUE);
-    printf("\n------------------------------------------------------------------------------------\n");
-    Color(WHITE,BLACK);
+
 }
