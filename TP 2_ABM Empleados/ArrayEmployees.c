@@ -74,7 +74,7 @@ int modifyEmployee(sEmployee employeeData[], int quant)
     sEmployee auxiliarMod;
     int confirmation;
     int successReturn;
-    int flagId;
+    int flagId = 0;
 
     employeeIdToModify = getInt("\nIngrese el ID del empleado a modificar: ");
     printf("\n");
@@ -121,7 +121,8 @@ int deleteEmployee(sEmployee employeeData[], int quant)
     int i;
     int employeeIdToDelete;
     int confirmation;
-    int modifyingResult;
+    int deletionResult;
+    int flagId = 0;
 
     employeeIdToDelete = getInt("\nIngresa el ID del empleado a eliminar: ");
 
@@ -131,6 +132,7 @@ int deleteEmployee(sEmployee employeeData[], int quant)
         {
             if(employeeIdToDelete == employeeData[i].id && employeeData[i].isEmpty == 0)
             {
+                flagId = 1;
                 Color(WHITE,RED);
                 confirmation = getInt("\nEsta seguro que quiere eliminar el/la empleado/a?\n\nIngrese 1 para si, cualquier tecla para no: ");
                 Color(WHITE,BLACK);
@@ -138,13 +140,13 @@ int deleteEmployee(sEmployee employeeData[], int quant)
                 {
                     employeeData[i].isEmpty = changeIsEmptyState(employeeData[i]);
                     printf("\nEl/la empleado/a %s, %s (ID: %04d) ha sido eliminado del sistema.\n",employeeData[i].lastName,employeeData[i].name,employeeIdToDelete);
-                    modifyingResult = 1;
+                    deletionResult = 1;
                     break;
                 }
                 else
                 {
                     printf("No se eliminar%c el/la empleado/a.",160);
-                    modifyingResult = 0;
+                    deletionResult = 0;
                     break;
                 }
             }
@@ -153,12 +155,19 @@ int deleteEmployee(sEmployee employeeData[], int quant)
                 Color(WHITE,RED);
                 printf("No existe un/a empleado/a con la id %04d\n\n", employeeIdToDelete);
                 Color(WHITE,BLACK);
-                modifyingResult = 0;
+                deletionResult = 0;
                 break;
             }
         }
+        if(flagId == 0)
+        {
+            Color(WHITE,RED);
+            printf("\nNo existe un/a empleado/a con la id %04d.\n ",employeeIdToDelete);
+            Color(WHITE,BLACK);
+            deletionResult = 0;
+        }
     }
-    return modifyingResult;
+    return deletionResult;
 }
 
 int sortEmployees(sEmployee employeeData[], int quant)
@@ -223,9 +232,13 @@ int printList(sEmployee employeeData[],int quant)
 
     if(employeeData != NULL && quant > 0)
     {
+        Color(WHITE,BLUE);
         printf("\n\n------------------------------------------------------------------------------------\n");
+        Color(WHITE,MAGENTA);
         printf("|ID      |APELLIDO            |NOMBRE              |SALARIO             |SECTOR");
+        Color(WHITE,BLUE);
         printf("\n------------------------------------------------------------------------------------\n");
+        Color(WHITE,BLACK);
 
         for(i=0; i < quant; i++)
         {

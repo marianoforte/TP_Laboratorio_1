@@ -35,10 +35,8 @@ void mainMenu(void)
             {
                 Color(WHITE,BLUE);
                 printf("\n\n------------------------------------------------------------------------------------\n\n");
-                Color(WHITE,BLACK);
                 Color(WHITE,RED);
                 printf("\n\nEl listado esta lleno. Elimina alg%cn empleado para ingresar uno nuevo\n\n",163);
-                Color(WHITE,BLACK);
                 Color(WHITE,BLUE);
                 printf("\n\n------------------------------------------------------------------------------------\n\n");
                 Color(WHITE,BLACK);
@@ -51,10 +49,8 @@ void mainMenu(void)
                 employeesListing[freeRowEmployeesList].id = lastId;
                 Color(WHITE,BLUE);
                 printf("\n\n------------------------------------------------------------------------------------\n\n");
-                Color(WHITE,BLACK);
-                Color(WHITE,YELLOW );
+                Color(WHITE,MAGENTA );
                 printf("Se le ha asignado la ID %04d.",lastId);
-                Color(WHITE,BLACK);
                 Color(WHITE,BLUE);
                 printf("\n\n------------------------------------------------------------------------------------\n\n");
                 Color(WHITE,BLACK);
@@ -67,10 +63,8 @@ void mainMenu(void)
             {
                 Color(WHITE,BLUE);
                 printf("\n\n------------------------------------------------------------------------------------\n\n");
-                Color(WHITE,BLACK);
                 Color(WHITE,RED);
                 printf("\nNo se han ingresado empleados hasta el momento.\n");
-                Color(WHITE,BLACK);
                 Color(WHITE,BLUE);
                 printf("\n\n------------------------------------------------------------------------------------\n\n");
                 Color(WHITE,BLACK);
@@ -107,10 +101,8 @@ void mainMenu(void)
             {
                 Color(WHITE,BLUE);
                 printf("\n\n------------------------------------------------------------------------------------\n\n");
-                Color(WHITE,BLACK);
                 Color(WHITE,RED);
                 printf("\nNo se han ingresado empleados hasta el momento.\n");
-                Color(WHITE,BLACK);
                 Color(WHITE,BLUE);
                 printf("\n\n------------------------------------------------------------------------------------\n\n");
                 Color(WHITE,BLACK);
@@ -136,10 +128,8 @@ void mainMenu(void)
     printf("\n\n");
     Color(WHITE,BLUE);
     printf("------------------------------------------------------------------------------------\n");
-    Color(WHITE,BLACK);
     Color(WHITE,GREEN);
-    printf("\nGracias por utilizar la aplicaci%cn.\n\nDise%co y desarrollo por Mariano Forte.\n\nVersion 4.0\n",162,164);
-    Color(WHITE,BLACK);
+    printf("\nGracias por utilizar la aplicaci%cn.\n\nDise%co y desarrollo por Mariano Forte.\n\nVersion 4.3\n",162,164);
     Color(WHITE,BLUE);
     printf("\n------------------------------------------------------------------------------------\n");
     Color(WHITE,BLACK);
