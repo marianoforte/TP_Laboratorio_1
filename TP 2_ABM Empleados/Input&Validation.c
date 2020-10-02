@@ -7,9 +7,12 @@
 #include <ctype.h>
 #include "ArrayEmployees.h"
 #include "Input&Validation.h"
+#include "ConsoleOutputStyle.h"
 
 sEmployee getEmployee(sEmployee employeeData)
 {
+    int sectorNumber;
+
     fflush(stdin);
     getCharString("\nIngrese el nombre: ", "Error! Ingrese solamente letras. Vuelva a intentarlo: ", employeeData.name);
     removeBackslashN(employeeData.name);
@@ -20,6 +23,7 @@ sEmployee getEmployee(sEmployee employeeData)
     removeBackslashN(employeeData.lastName);
     firstLetterInCaps(employeeData.lastName);
 
+    fflush(stdin);
     printf("\nIngrese el salario: ");
     getAndValidateIntAndFloatNumber("%f",&employeeData.salary);
     while(employeeData.salary < 1){
@@ -28,9 +32,13 @@ sEmployee getEmployee(sEmployee employeeData)
     }
 
     fflush(stdin);
-    getCharString("\nIngrese el sector: ", "Error! Ingrese solamente letras. Vuelva a intentarlo: ", employeeData.sector);
-    removeBackslashN(employeeData.sector);
-    firstLetterInCaps(employeeData.sector);
+    sectorNumber = getInt("\nIngrese el sector: ");
+    while(sectorNumber < 1)
+    {
+        fflush(stdin);
+        getInt("\nEl sector debe ser un numero mayor a cero. Ingrese nuevamente el sector: ");
+    }
+    employeeData.sector = sectorNumber;
 
     return employeeData;
 }
@@ -86,18 +94,22 @@ int getAndValidateIntAndFloatNumber(const char* floatMask, void* variable)
     int flagConfirmation = 0;
     int returnValue = 0;
 
+    fflush(stdin);
     if(!scanf(floatMask, variable))
     {
         while(flagConfirmation == 0)
         {
             while((input = getchar()) != '\n' && input != EOF);
-            printf("\nError. Eso no es un n%cmero.\n\nVuelva a intentarlo: ",163);
+            printf("\nIngreso Inv%clido.\n\nVuelva a intentarlo: ",160);
+            fflush(stdin);
             if(scanf(floatMask, variable))
             {
+                fflush(stdin);
+                flagConfirmation = 1;
                 returnValue = 1;
             }
         }
-        flagConfirmation = 1;
+        fflush(stdin);
         return returnValue;
     }
     if(getchar() != '\n')
@@ -105,13 +117,13 @@ int getAndValidateIntAndFloatNumber(const char* floatMask, void* variable)
         while(flagConfirmation == 0)
         {
             while((input = getchar()) != '\n' && input != EOF);
-            printf("\nError. Eso no es un n%cmero.\n\nVuelva a intentarlo: ",163);
+            printf("\nIngreso Inv%clido.\n\nVuelva a intentarlo: ",160);
             if(scanf(floatMask, variable))
             {
+                flagConfirmation = 1;
                 returnValue = 1;
             }
         }
-        flagConfirmation = 1;
         return returnValue;
     }
     return returnValue;
@@ -119,23 +131,28 @@ int getAndValidateIntAndFloatNumber(const char* floatMask, void* variable)
 
 int getInt(char message[])
  {
-    char aux[51];
+    char aux[256];
     int integer;
     int integerValidation;
 
     printf(message);
-    fflush(stdin);
     scanf("%s",aux);
-    integer = atoi(aux);
+    fflush(stdin);
     integerValidation = isInt(aux);
 
     while(integerValidation == 0)
     {
         printf("\nError! Eso no es un n%cmero. Ingrese un n%cmero: ",163,163);
         scanf("%s",aux);
+        fflush(stdin);
+        integerValidation = isInt(aux);
         printf("\n");
     }
-
+    if(integerValidation == 1)
+    {
+        integer = atoi(aux);
+    }
+    fflush(stdin);
     return integer;
  }
 

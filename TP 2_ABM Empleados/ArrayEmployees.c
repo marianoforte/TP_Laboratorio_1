@@ -7,6 +7,7 @@
 #include <ctype.h>
 #include "ArrayEmployees.h"
 #include "Input&Validation.h"
+#include "ConsoleOutputStyle.h"
 
 int initArrayAsEmpty(sEmployee employeeData[], int quant)
 {
@@ -73,37 +74,45 @@ int modifyEmployee(sEmployee employeeData[], int quant)
     sEmployee auxiliarMod;
     int confirmation;
     int successReturn;
+    int flagId;
 
     employeeIdToModify = getInt("\nIngrese el ID del empleado a modificar: ");
     printf("\n");
 
-    for(i=0;i<quant;i++)
-    {   printf("ID empleado: %d\n",employeeData[i].id);
-
-        if(employeeData[i].id == employeeIdToModify)
+    if(employeeData != NULL && quant > 0)
+    {
+        for(i=0;i<quant;i++)
         {
-            auxiliarMod = getEmployee(employeeData[i]);
-            confirmation = getInt("\nEsta seguro que quiere modificar los datos? Ingrese 1 para si, cualquier tecla para no: ");
-            if(confirmation != 1)
+            if(employeeData[i].id == employeeIdToModify)
             {
-                printf("\n\nNo se aplicar%cn las modificaciones.",159);
-                successReturn = 0;
-                break;
-            }
-            else
-            {
-                employeeData[i] = auxiliarMod;
-                successReturn = 1;
-                break;
+                flagId = 1;
+                auxiliarMod = getEmployee(employeeData[i]);
+                Color(WHITE,RED);
+                confirmation = getInt("\nEsta seguro que quiere modificar los datos? Ingrese 1 para si, cualquier tecla para no: ");
+                Color(WHITE,BLACK);
+                if(confirmation != 1)
+                {
+                    printf("\n\nNo se aplicar%cn las modificaciones.",159);
+                    successReturn = 0;
+                    break;
+                }
+                else
+                {
+                    employeeData[i] = auxiliarMod;
+                    successReturn = 1;
+                    break;
+                }
             }
         }
-        else
+        if(flagId == 0)
         {
+            Color(WHITE,RED);
             printf("\nNo existe un/a empleado/a con la id %04d.\n ",employeeIdToModify);
+            Color(WHITE,BLACK);
             successReturn = 0;
-            break;
         }
     }
+    printf("\n");
     return successReturn;
 }
 
@@ -116,27 +125,34 @@ int deleteEmployee(sEmployee employeeData[], int quant)
 
     employeeIdToDelete = getInt("\nIngresa el ID del empleado a eliminar: ");
 
-    for(i = 0; i < quant; i++)
+    if(employeeData != NULL && quant > 0)
     {
-        confirmation = getInt("\nEsta seguro que quiere eliminar el/la empleado/a? Ingrese 1 para si, cualquier tecla para no: ");
-        if(confirmation != 1)
+        for(i = 0; i < quant; i++)
         {
-            printf("No se eliminar%c el/la empleado/a.",160);
-            modifyingResult = 0;
-            break;
-        }
-        else
-        {
-            if(employeeData[i].id == employeeIdToDelete && employeeData[i].isEmpty == 0)
+            if(employeeIdToDelete == employeeData[i].id && employeeData[i].isEmpty == 0)
             {
-                employeeData[i].isEmpty = changeIsEmptyState(employeeData[i]);
-                printf("\nEl/la empleado/a %s, %s (ID: %04d) ha sido eliminado del sistema.\n",employeeData[i].lastName,employeeData[i].name,employeeIdToDelete);
-                modifyingResult = 1;
-                break;
+                Color(WHITE,RED);
+                confirmation = getInt("\nEsta seguro que quiere eliminar el/la empleado/a?\n\nIngrese 1 para si, cualquier tecla para no: ");
+                Color(WHITE,BLACK);
+                if(confirmation == 1)
+                {
+                    employeeData[i].isEmpty = changeIsEmptyState(employeeData[i]);
+                    printf("\nEl/la empleado/a %s, %s (ID: %04d) ha sido eliminado del sistema.\n",employeeData[i].lastName,employeeData[i].name,employeeIdToDelete);
+                    modifyingResult = 1;
+                    break;
+                }
+                else
+                {
+                    printf("No se eliminar%c el/la empleado/a.",160);
+                    modifyingResult = 0;
+                    break;
+                }
             }
             else
             {
+                Color(WHITE,RED);
                 printf("No existe un/a empleado/a con la id %04d\n\n", employeeIdToDelete);
+                Color(WHITE,BLACK);
                 modifyingResult = 0;
                 break;
             }
@@ -164,7 +180,7 @@ int sortEmployees(sEmployee employeeData[], int quant)
                 employeeData[j] = auxLastName;
                 result = 1;
             }
-            if(((strcmp(employeeData[i].lastName, employeeData[j].lastName) == 0) && (strcmp(employeeData[i].sector, employeeData[j].sector) > 0)))//ordenamiento ascendente por sector
+            if(((strcmp(employeeData[i].lastName, employeeData[j].lastName) == 0) && ((employeeData[i].sector > employeeData[j].sector) > 0)))//ordenamiento ascendente por sector
             {                                                                                                                                      //si el apellido es el mismo
                 auxSector = employeeData[i];
                 employeeData[i] = employeeData[j];
@@ -201,42 +217,33 @@ float averageWage(sEmployee employeeData[], int quant)
 int printList(sEmployee employeeData[],int quant)
 {
     int retorno = 0;
-    int i, j;
+    int i;
     float employeesAverageWage;
     employeesAverageWage = averageWage(employeeData,quant);
 
-    for(i=0;i<quant;i++)
+    if(employeeData != NULL && quant > 0)
     {
-        if(employeeData != NULL && quant > 0)
-        {
-            retorno = 1;
-            printf("\n\n------------------------------------------------------------------------------------\n");
-            printf("ID \tNOMBRE \t\tAPELLIDO \t\tSALARIO  \tSECTOR");
-            printf("\n------------------------------------------------------------------------------------\n\n");
+        printf("\n\n------------------------------------------------------------------------------------\n");
+        printf("|ID      |APELLIDO            |NOMBRE              |SALARIO             |SECTOR");
+        printf("\n------------------------------------------------------------------------------------\n");
 
-            for(j=0; j < quant; j++)
-            {
-                if(employeeData[j].isEmpty == 0)
-                {
-                    printf("%04d %4s %10s %15.2f %20s\n",employeeData[j].id,employeeData[j].name,employeeData[j].lastName,employeeData[j].salary,employeeData[j].sector);
-                }
-            }
-            printf("\n------------------------------------------------------------------------------------\n");
-            printf("El promedio de los salarios es %.2f",employeesAverageWage);
-            printf("\n------------------------------------------------------------------------------------\n\n");
-            retorno = 1;
-            system("pause");
-            system("cls");
-        }
-        if(employeeData[i].isEmpty == 1)
+        for(i=0; i < quant; i++)
         {
-            printf("\n\n------------------------------------------------------------------------------------\n\n");
-            printf("\nNo hay empleados para mostrar.\n");
-            printf("\n\n------------------------------------------------------------------------------------\n\n");
-            system("pause");
-            system("cls");
-            retorno = 0;
+            if(employeeData[i].isEmpty == 0)
+            {
+                printf("|%-8d|%-20s|%-20s|%-20.2f|%-5d\n",employeeData[i].id,employeeData[i].lastName,employeeData[i].name,employeeData[i].salary,employeeData[i].sector);
+            }
         }
+        Color(WHITE,BLUE);
+        printf("------------------------------------------------------------------------------------\n\n");
+        printf("\n------------------------------------------------------------------------------------\n");
+        Color(WHITE,BLACK);
+        printf("El promedio de los salarios es %.2f",employeesAverageWage);
+        Color(WHITE,BLUE);
+        printf("\n------------------------------------------------------------------------------------\n\n\n");
+        Color(WHITE,BLACK);
+        retorno = 1;
     }
+
     return retorno;
 }

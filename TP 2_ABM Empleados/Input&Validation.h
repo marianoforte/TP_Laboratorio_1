@@ -6,7 +6,7 @@ typedef struct{
     char name[51];
     char lastName[51];
     float salary;
-    char sector[51];
+    int sector;
     int isEmpty;
 }sEmployee;
 

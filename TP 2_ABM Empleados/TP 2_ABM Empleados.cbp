@@ -35,6 +35,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="ArrayEmployees.h" />
+		<Unit filename="ConsoleOutputStyle.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ConsoleOutputStyle.h" />
 		<Unit filename="Input&amp;Validation.c">
 			<Option compilerVar="CC" />
 		</Unit>
