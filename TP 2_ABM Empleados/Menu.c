@@ -119,10 +119,11 @@ void mainMenu(void)
             Color(WHITE,BLUE);
             printf("------------------------------------------------------------------------------------\n");
             Color(WHITE,GREEN);
-            printf("\nGracias por utilizar la aplicaci%cn.\n\nDise%co y desarrollo por Mariano Forte.\n\nVersion 4.7\n",162,164);
+            printf("\n                         Gracias por utilizar la aplicaci%cn.\n\n                       Dise%co y desarrollo por Mariano Forte.\n\n                                    Version 4.8\n",162,164);
             Color(WHITE,BLUE);
             printf("\n------------------------------------------------------------------------------------\n");
             Color(WHITE,BLACK);
+            system("pause");
             break;
         default:
             Color(WHITE,RED);
