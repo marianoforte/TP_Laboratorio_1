@@ -26,7 +26,7 @@ void mainMenu(void)
         printf("\n                   |*********ADMINISTRACION DE EMPLEADOS*********|");
         printf("\n                   |_____________________________________________|\n\n");
         Color(WHITE,BLACK);
-        option = getInt("\nSelecciona una opcion\n\n1. ALTA\n2. MODIFICAR\n3. BAJA\n4. INFORMAR\n0. SALIR\n\nIngrese una opcion: ");
+        option = getInt("\nSelecciona una opcion\n\n1. ALTA\n2. MODIFICAR\n3. BAJA\n4. INFORMAR\n   -Lista de empleados por apellido y sector en orden ascendente\n   -Promedio de todos los salarios\n0. SALIR\n\nIngrese una opcion: ");
         switch(option)
         {
         case 1://ALTA
@@ -129,7 +129,7 @@ void mainMenu(void)
     Color(WHITE,BLUE);
     printf("------------------------------------------------------------------------------------\n");
     Color(WHITE,GREEN);
-    printf("\nGracias por utilizar la aplicaci%cn.\n\nDise%co y desarrollo por Mariano Forte.\n\nVersion 4.3\n",162,164);
+    printf("\nGracias por utilizar la aplicaci%cn.\n\nDise%co y desarrollo por Mariano Forte.\n\nVersion 4.6\n",162,164);
     Color(WHITE,BLUE);
     printf("\n------------------------------------------------------------------------------------\n");
     Color(WHITE,BLACK);
