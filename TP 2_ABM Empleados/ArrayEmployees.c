@@ -170,11 +170,11 @@ int deleteEmployee(sEmployee employeeData[], int quant)
     return deletionResult;
 }
 
-int sortEmployees(sEmployee employeeData[], int quant)
+int sortEmployeesAscendent(sEmployee employeeData[], int quant)
 {
     int i;
     int j;
-    int result;
+    int result = 0;
     sEmployee auxLastName;
     sEmployee auxSector;
 
@@ -201,12 +201,61 @@ int sortEmployees(sEmployee employeeData[], int quant)
     return result;
 }
 
+int sortEmployeesDescendent(sEmployee employeeData[], int quant)
+{
+    int i;
+    int j;
+    int result = 0;
+    sEmployee auxLastName;
+    sEmployee auxSector;
+
+    for(i = 0; i < quant; i++)
+    {
+        for(j = i+1; j < quant; j++)
+        {
+            if(strcmp(employeeData[i].lastName, employeeData[j].lastName) < 0)//ordenamiento ascendente por apellido
+            {
+                auxLastName = employeeData[i];
+                employeeData[i] = employeeData[j];
+                employeeData[j] = auxLastName;
+                result = 1;
+            }
+            if(((strcmp(employeeData[i].lastName, employeeData[j].lastName) == 0) && ((employeeData[i].sector < employeeData[j].sector) > 0)))//ordenamiento ascendente por sector
+            {                                                                                                                                      //si el apellido es el mismo
+                auxSector = employeeData[i];
+                employeeData[i] = employeeData[j];
+                employeeData[j] = auxSector;
+                result = 1;
+            }
+        }
+    }
+    return result;
+}
+
+float totalWage(sEmployee employeeData[], int quant)
+{
+    int i;
+    float totalWage;
+
+    if(employeeData != NULL && quant > 0)
+    {
+        for(i=0; i<quant; i++)
+        {
+            if(employeeData[i].isEmpty == 0)
+            {
+                totalWage = totalWage + employeeData[i].salary;
+            }
+        }
+    }
+    return totalWage;
+}
+
 float averageWage(sEmployee employeeData[], int quant)
 {
     int i;
-    float sum;
+    float sum = 0;
     float finalAverage;
-    int salaryCounter = 0;
+    int wageCounter = 0;
 
     if(employeeData != NULL && quant > 0)
     {
@@ -215,20 +264,45 @@ float averageWage(sEmployee employeeData[], int quant)
             if(employeeData[i].isEmpty == 0)
             {
                 sum = sum + employeeData[i].salary;
-                salaryCounter++;
+
+                wageCounter++;
             }
         }
     }
-    finalAverage = sum / salaryCounter;
+    finalAverage = sum / wageCounter;
     return finalAverage;
+}
+
+int employeesWageExceedAverage(sEmployee employeeData[], int quant)
+{
+    int i;
+    float wagesAverage;
+    int wagesCounter = 0;
+    wagesAverage = averageWage(employeeData,quant);
+
+    if(employeeData != NULL && quant > 0)
+    {
+        for(i=0; i<quant; i++)
+        {
+            if(employeeData[i].isEmpty == 0 && employeeData[i].salary > wagesAverage)
+            {
+                wagesCounter++;
+            }
+        }
+    }
+    return wagesCounter;
 }
 
 int printList(sEmployee employeeData[],int quant)
 {
-    int retorno = 0;
     int i;
+    int retorno = 0;
+    float employeesTotalWage;
     float employeesAverageWage;
+    int employeesExceedAverageWage;
+    employeesTotalWage = totalWage(employeeData,quant);
     employeesAverageWage = averageWage(employeeData,quant);
+    employeesExceedAverageWage = employeesWageExceedAverage(employeeData,quant);
 
     if(employeeData != NULL && quant > 0)
     {
@@ -251,7 +325,9 @@ int printList(sEmployee employeeData[],int quant)
         printf("------------------------------------------------------------------------------------\n\n");
         printf("\n------------------------------------------------------------------------------------\n");
         Colour(WHITE,BLACK);
-        printf("El promedio de los salarios es %.2f",employeesAverageWage);
+        printf("El total de los salarios es %.2f",employeesTotalWage);
+        printf("\nEl promedio de los salarios es %.2f",employeesAverageWage);
+        printf("\nEmpleados que superan el salario promedio: %d",employeesExceedAverageWage);
         Colour(WHITE,BLUE);
         printf("\n------------------------------------------------------------------------------------\n\n\n");
         Colour(WHITE,BLACK);

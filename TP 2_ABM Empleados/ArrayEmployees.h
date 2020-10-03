@@ -64,7 +64,26 @@ int deleteEmployee(sEmployee employeeData[], int quant);
  * \return The sorting confirmation
  *
  */
-int sortEmployees(sEmployee employeeData[], int quant);
+int sortEmployeesAscendent(sEmployee employeeData[], int quant);
+
+/**
+ * \brief Sorts the employees in descending order by last name, and if they are the same,
+            sorts them in descending order by sector
+ * \param employeeData It is the array to sort
+ * \param quant It is the length of the array itself
+ * \return The sorting confirmation
+ *
+ */
+ int sortEmployeesDescendent(sEmployee employeeData[], int quant);
+
+/**
+ * \brief Calculates the total sum of all wages
+ * \param employeeData It is the array where to gather the wages data
+ * \param quant It is the length of the array itself
+ * \return The total of all wages together
+ *
+ */
+float totalWage(sEmployee employeeData[], int quant);
 
 /**
  * \brief Calculates the average of all wages
@@ -74,6 +93,15 @@ int sortEmployees(sEmployee employeeData[], int quant);
  *
  */
 float averageWage(sEmployee employeeData[], int quant);
+
+/**
+ * \brief Calculates how many employees exceed the average wage
+ * \param employeeData It is the array where to gather the wages data
+ * \param quant It is the length of the array itself
+ * \return The total of employees who exceed the average wage
+ *
+ */
+int employeesWageExceedAverage(sEmployee employeeData[], int quant);
 
 /**
  * \brief Prints a list with all the employees in the system and the wages average

@@ -104,18 +104,27 @@ void mainMenu(void)
                 Colour(WHITE,BLACK);
             }
             else
-            {
-                sortEmployees(employeesListing,SIZE);
+            {   option = getInt("\nSelecciona una opcion\n\n1. MOSTRAR EMPLEADOS EN ORDEN ASCENDENTE\n2. MOSTRAR EMPLEADOS EN ORDEN DESCENDENTE\n\nIngrese una opcion: ");
+                switch(option)
+                {
+                    case 1:
+                        sortEmployeesAscendent(employeesListing,SIZE);
+                        break;
+                    case 2:
+                        sortEmployeesDescendent(employeesListing,SIZE);
+                        break;
+                }
                 printList(employeesListing,SIZE);
             }
             system("pause");
             system("cls");
+            break;
         case 0: //SALIR
             printf("\n\n");
             Colour(WHITE,BLUE);
             printf("------------------------------------------------------------------------------------\n");
             Colour(WHITE,GREEN);
-            printf("\n                         Gracias por utilizar la aplicaci%cn.\n\n                       Dise%co y desarrollo por Mariano Forte.\n\n                                    Version 4.8.2\n",162,164);
+            printf("\n                         Gracias por utilizar la aplicaci%cn.\n\n                       Dise%co y desarrollo por Mariano Forte.\n\n                                    Version 4.8.5\n",162,164);
             Colour(WHITE,BLUE);
             printf("\n------------------------------------------------------------------------------------\n");
             Colour(WHITE,BLACK);
