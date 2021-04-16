@@ -24,7 +24,7 @@ float DivisionOperandos(float dividendo, float divisor);
 float MultiplicacionOperandos(float primerNumero, float segundoNumero);
 
 /**< Prototipo de la función de factorial */
-unsigned long long int Factorial(double primerNumero);
+double Factorial(double primerNumero);
 
 /**< Prototipo de validación de la función factorial */
 void ValidacionFactorial(float numero);

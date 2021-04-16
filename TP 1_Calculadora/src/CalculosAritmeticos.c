@@ -94,9 +94,9 @@ float MultiplicacionOperandos(float primerNumero, float segundoNumero)
  * \param Else retorna 1 en caso que el número ingresado sea 0, ya que por definición el factorial de 0 es 1
  * \return Retorna el resultado validado de la operación factorial
  */
-unsigned long long int Factorial(double primerNumero)
+double Factorial(double primerNumero)
 {
-    unsigned long long int resultado;
+    double resultado;
     int i;
     resultado = 1;
     if(primerNumero != 0)
@@ -126,7 +126,7 @@ unsigned long long int Factorial(double primerNumero)
 void ValidacionFactorial(float numero)
 {
     int entero;
-    unsigned long long int resultado;
+    double resultado;
     entero = numero;
     if(numero - entero)
     {
@@ -135,7 +135,7 @@ void ValidacionFactorial(float numero)
     else
     {
         resultado = Factorial(numero);
-        printf("El factorial de %.0f es %llu\n\n",numero,resultado);
+        printf("El factorial de %.0f es %.0f\n\n",numero,resultado);
     }
 }
 
