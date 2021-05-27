@@ -23,19 +23,20 @@
 int ValidarDato(const char* floatMask, void* variable)
 {
     int caracter;
+    int rtn = 0;
     if(!scanf(floatMask, variable))
     {
         while((caracter = getchar()) != '\n' && caracter != EOF);
         printf("\nError. Eso no es un numero.\n");
-        return 1;
+        rtn = 1;
     }
     if(getchar() != '\n')
     {
         while((caracter = getchar()) != '\n' && caracter != EOF);
         printf("\nError. Eso no es un numero.\n");
-        return 1;
+        rtn = 1;
     }
-    return 0;
+    return rtn;
 }
 
 /**
@@ -43,11 +44,10 @@ int ValidarDato(const char* floatMask, void* variable)
  * \param Suma es la variable que adquiere la adición de ambos números
  * \return Retorna el resultado de la suma
  */
-float SumaOperandos(float primerNumero, float segundoNumero)
+float SumaOperandos(float primerNumero, float segundoNumero, float* suma)
 {
-    float suma;
-    suma = primerNumero + segundoNumero;
-    return suma;
+    *suma = primerNumero + segundoNumero;
+    return *suma;
 }
 
 /**
@@ -55,11 +55,10 @@ float SumaOperandos(float primerNumero, float segundoNumero)
  * \param Resta es la variable que adquiere la sustracción del segundo número al primero
  * \return Retorna el resultado de la resta
  */
-float RestaOperandos(float primerNumero, float segundoNumero)
+float RestaOperandos(float primerNumero, float segundoNumero, float* resta)
 {
-    float resta;
-    resta = primerNumero - segundoNumero;
-    return resta;
+    *resta = primerNumero - segundoNumero;
+    return *resta;
 }
 
 /**
@@ -67,11 +66,10 @@ float RestaOperandos(float primerNumero, float segundoNumero)
  * \param Cociente es la variable que adquiere el resultado de la división entre el cociente y el divisor
  * \return Retorna el resultado de la división
  */
-float DivisionOperandos(float dividendo, float divisor)
+float DivisionOperandos(float dividendo, float divisor, float* cociente)
 {
-    float cociente;
-    cociente = dividendo / divisor;
-    return cociente;
+    *cociente = dividendo / divisor;
+    return *cociente;
 }
 
 /**
@@ -79,37 +77,14 @@ float DivisionOperandos(float dividendo, float divisor)
  * \param Producto es la variable que adquiere el resultado de la multiplicación entre los dos números
  * \return Retorna el resultado de la multiplicación
  */
-float MultiplicacionOperandos(float primerNumero, float segundoNumero)
+float MultiplicacionOperandos(float primerNumero, float segundoNumero, float* producto)
 {
-    float producto;
-    producto = primerNumero * segundoNumero;
-    return producto;
+    *producto = primerNumero * segundoNumero;
+    return *producto;
 }
 
-/**
- * \brief Recibe el primer número ingresado por el usuario y lo factorea
- * \param If comprobrueba que el número ingresado sea distinto de 0, dentro contiene un for que realiza una
-          iteración multiplicando el número ingresado por el índice de repeticiones
-          retornando el resultado factorial
- * \param Else retorna 1 en caso que el número ingresado sea 0, ya que por definición el factorial de 0 es 1
- * \return Retorna el resultado validado de la operación factorial
- */
-double Factorial(double primerNumero)
-{
-    double resultado;
-    int i;
-    resultado = 1;
-    if(primerNumero != 0)
-    {
-        for(i=2; i<=primerNumero; i++){
-            resultado *= i;
-        }
-        return (resultado);
-    }
-    else
-    {
-        return 1;
-    }
+void calcularFactorial(float primerNumero, unsigned long long int* factorial){
+
 }
 
 /**
@@ -123,19 +98,44 @@ double Factorial(double primerNumero)
           a la variable resultado la función Factorial
  * \return Imprime en pantalla el resultado de la factorización
  */
-void ValidacionFactorial(float numero)
+void MostrarFactorial(float numero, unsigned long long int factorial)
 {
-    int entero;
-    double resultado;
-    entero = numero;
-    if(numero - entero)
+
+    if(factorial == 0)
     {
-        printf("Error. Los numeros decimales no pueden factorizarse.\n\n");
+        printf("Error. El numero a factorizar debe pertenecer a los enteros y ser mayor a cero.\n\n");
     }
     else
     {
-        resultado = Factorial(numero);
-        printf("El factorial de %.0f es %.0f\n\n",numero,resultado);
+        printf("El factorial de %.0f es %llu\n",numero, factorial);
     }
 }
+
+/**
+ * \brief Recibe el primer número ingresado por el usuario y lo factorea
+ * \param If comprobrueba que el número ingresado sea distinto de 0, dentro contiene un for que realiza una
+          iteración multiplicando el número ingresado por el índice de repeticiones
+          retornando el resultado factorial
+ * \param Else retorna 1 en caso que el número ingresado sea 0, ya que por definición el factorial de 0 es 1
+ * \return Retorna el resultado validado de la operación factorial
+ */
+unsigned long long int Factorial(float numero, unsigned long long int* factorial)
+{
+    int i, entero;
+    entero = numero;
+    *factorial = 1;
+    if((numero != 0) && !(numero-entero)){
+        for(i=2; i<=numero; i++){
+        	*factorial *= i;
+        }
+        return (*factorial);
+    }
+    else{
+        return 0;
+    }
+}
+
+
+
+
 

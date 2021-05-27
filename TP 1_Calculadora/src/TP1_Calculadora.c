@@ -13,6 +13,7 @@
 #include <conio.h>
 #include <string.h>
 #include <ctype.h>
+#include <inttypes.h>
 #include "CalculosAritmeticos.h"
 
 int main()
@@ -24,6 +25,8 @@ int main()
     float resta;
     float division;
     float producto;
+    unsigned long long int factorialUno;
+    unsigned long long int factorialDos;
     char salir;
     primerNumero = 0;
     segundoNumero = 0;
@@ -33,13 +36,9 @@ int main()
     do{
         printf("\n1- Ingresar 1er operando (A = %.2f)\n",primerNumero);
         printf("2- Ingresar 2do operando (B = %.2f)\n",segundoNumero);
-        printf("3- Calcular la suma (A+B)\n");
-        printf("4- Calcular la resta (A-B)\n");
-        printf("5- Calcular la division (A/B)\n");
-        printf("6- Calcular la multiplicacion (A*B)\n");
-        printf("7- Calcular el factorial (A!)\n");
-        printf("8- Calcular todas las operaciones\n");
-        printf("9- Salir\n\n");
+        printf("3- Calcular todas las operaciones\n");
+        printf("4- Informar resultadoss\n");
+        printf("5- Salir\n\n");
         printf("Opcion: ");
         scanf("%d",&opcion);
 
@@ -58,74 +57,35 @@ int main()
                 }while(ValidarDato("%f", &segundoNumero));
                 break;
             case 3:
-                suma = SumaOperandos(primerNumero,segundoNumero);
-                printf("-------------------------------------------------------------------------------\n\n");
-                printf("1er operando: %.2f\n",primerNumero);
-                printf("2do operando: %.2f\n\n",segundoNumero);
-                printf("Resultado: \n");
-                printf("La suma es %.2f\n\n",suma);
+                SumaOperandos(primerNumero,segundoNumero, &suma);
+                RestaOperandos(primerNumero,segundoNumero, &resta);
+                MultiplicacionOperandos(primerNumero,segundoNumero, &producto);
+                DivisionOperandos(primerNumero,segundoNumero, &division);
+                Factorial(primerNumero, &factorialUno);
+                Factorial(segundoNumero, &factorialDos);
                 printf("-------------------------------------------------------------------------------\n");
                 break;
             case 4:
-                resta = RestaOperandos(primerNumero,segundoNumero);
-                printf("1er operando: %.2f\n",primerNumero);
-                printf("2do operando: %.2f\n\n",segundoNumero);
-                printf("-------------------------------------------------------------------------------\n\n");
-                printf("Resultado: \n");
-                printf("La resta es %.2f\n\n",resta);
-                printf("-------------------------------------------------------------------------------\n");
-                break;
+            	printf("-------------------------------------------------------------------------------\n\n");
+				printf("1er operando: %.2f\n",primerNumero);
+				printf("2do operando: %.2f\n\n",segundoNumero);
+				printf("Resultados: \n");
+				printf("El resultado de %.2f + %.2f es: %.2f\n",primerNumero, segundoNumero, suma);
+				printf("El resultado de %.2f - %.2f es: %.2f\n",primerNumero, segundoNumero, resta);
+				if(segundoNumero == 0){
+					printf("No es posible dividir por 0.\n");
+				}
+				else{
+					printf("El resultado de %.2f / %.2f es: %.2f\n",primerNumero, segundoNumero, division);
+				}
+				printf("El resultado de %.2f * %.2f es: %.2f\n",primerNumero, segundoNumero, producto);
+				MostrarFactorial(primerNumero, factorialUno);
+				MostrarFactorial(segundoNumero, factorialDos);
+				printf("-------------------------------------------------------------------------------\n");
+				primerNumero = 0;
+				segundoNumero = 0;
+            	break;
             case 5:
-                printf("-------------------------------------------------------------------------------\n\n");
-                printf("1er operando: %.2f\n",primerNumero);
-                printf("2do operando: %.2f\n\n",segundoNumero);
-                if(segundoNumero == 0){
-                    printf("Error. No se puede dividir por 0.\n\n");
-                }
-                else{
-                    division = DivisionOperandos(primerNumero,segundoNumero);
-                    printf("Resultado: \n");
-                    printf("El cociente es %.2f\n\n",division);
-                }
-                printf("-------------------------------------------------------------------------------\n");
-                break;
-            case 6:
-                producto = MultiplicacionOperandos(primerNumero,segundoNumero);
-                printf("-------------------------------------------------------------------------------\n\n");
-                printf("1er operando: %.2f\n",primerNumero);
-                printf("2do operando: %.2f\n\n",segundoNumero);
-                printf("Resultado: \n");
-                printf("El producto es %.2f\n\n",producto);
-                printf("-------------------------------------------------------------------------------\n");
-                break;
-            case 7:
-                printf("-------------------------------------------------------------------------------\n\n");
-                printf("Resultado: \n");
-                ValidacionFactorial(primerNumero);
-                printf("-------------------------------------------------------------------------------\n");
-                break;
-            case 8:
-                suma = SumaOperandos(primerNumero,segundoNumero);
-                resta = RestaOperandos(primerNumero,segundoNumero);
-                producto = MultiplicacionOperandos(primerNumero,segundoNumero);
-                printf("-------------------------------------------------------------------------------\n\n");
-                printf("1er operando: %.2f\n",primerNumero);
-                printf("2do operando: %.2f\n\n",segundoNumero);
-                printf("Resultados: \n");
-                printf("La suma es %.2f\n",suma);
-                printf("La resta es %.2f\n",resta);
-                if(segundoNumero == 0){
-                    printf("Error. No se puede dividir por 0.\n");
-                }
-                else{
-                    division = DivisionOperandos(primerNumero,segundoNumero);
-                    printf("El cociente es %.2f\n",division);
-                }
-                printf("El producto es %.2f\n",producto);
-                ValidacionFactorial(primerNumero);
-                printf("-------------------------------------------------------------------------------\n");
-                break;
-            case 9:
                 salir = 's';
                 break;
         }

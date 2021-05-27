@@ -12,21 +12,21 @@
 int ValidarDato(const char* fm, void* var);
 
 /**< Prototipo de la función de adición */
-float SumaOperandos(float primerNumero, float segundoNumero);
+float SumaOperandos(float primerNumero, float segundoNumero, float* suma);
 
 /**< Prototipo de la función de sustracción */
-float RestaOperandos(float primerNumero, float segundoNumero);
+float RestaOperandos(float primerNumero, float segundoNumero, float* resta);
 
 /**< Prototipo de la función de división */
-float DivisionOperandos(float dividendo, float divisor);
+float DivisionOperandos(float dividendo, float divisor, float* cociente);
 
 /**< Prototipo de la función de producto */
-float MultiplicacionOperandos(float primerNumero, float segundoNumero);
-
-/**< Prototipo de la función de factorial */
-double Factorial(double primerNumero);
+float MultiplicacionOperandos(float primerNumero, float segundoNumero, float* producto);
 
 /**< Prototipo de validación de la función factorial */
-void ValidacionFactorial(float numero);
+void MostrarFactorial(float numero, unsigned long long int factorial);
+
+/**< Prototipo de la función de factorial */
+unsigned long long int Factorial(float numero, unsigned long long int* factorial);
 
 #endif /* CALCULOSARITMETICOS_H_ */
