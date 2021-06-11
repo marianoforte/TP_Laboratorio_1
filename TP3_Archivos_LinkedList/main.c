@@ -23,11 +23,11 @@
 int main()
 {
 	setbuf(stdout,NULL);
-    int option;
+    int option, id;
     LinkedList* listaEmpleados = ll_newLinkedList();
-
+    id = controller_loadLastId("id.dat");
     do{
-    	puts("\t ******MENU DE OPERACIONES******");
+    	puts("\n\t\t ******MENU DE OPERACIONES******\n");
     	puts("1. Cargar los datos de los empleados desde el archivo data.csv (modo texto)");
     	puts("2. Cargar los datos de los empleados desde el archivo data.csv (modo binario)");
     	puts("3. Alta de empleado");
@@ -48,35 +48,53 @@ int main()
             	controller_loadFromBinary("data.dat",listaEmpleados);
             	break;
             case 3:
-            	controller_addEmployee(listaEmpleados);
+            	controller_addEmployee(listaEmpleados, &id);
             	break;
             case 4:
-            	controller_editEmployee(listaEmpleados);
+            	if(listaEmpleados != NULL){
+            		controller_editEmployee(listaEmpleados);
+            	}
             	break;
             case 5:
-            	controller_removeEmployee(listaEmpleados);
+            	if(listaEmpleados != NULL){
+            		controller_removeEmployee(listaEmpleados);
+            	}
             	break;
             case 6:
-            	controller_ListEmployee(listaEmpleados);
+            	if(listaEmpleados != NULL){
+            		controller_ListEmployee(listaEmpleados);
+            	}
             	break;
             case 7:
-            	controller_sortEmployee(listaEmpleados);
+            	if(listaEmpleados != NULL){
+            		controller_sortEmployee(listaEmpleados);
+            	}
             	break;
             case 8:
-            	controller_saveAsText("data.csv", listaEmpleados);
+            	if(listaEmpleados != NULL){
+            		controller_saveAsText("data.csv", listaEmpleados);
+            		controller_saveLastId("id.dat", &id);
+            	}
             	break;
             case 9:
-            	controller_saveAsBinary("data.dat", listaEmpleados);
+            	if(listaEmpleados != NULL){
+            		controller_saveAsBinary("data.dat", listaEmpleados);
+            		controller_saveLastId("id.dat", &id);
+            	}
             	break;
             case 10:
-            	puts("Gracias por utilizar la aplicacion.\nEscrita y desarrollada por Mariano Forte.");
+            	if(listaEmpleados != NULL){
+            		free(listaEmpleados);
+            	}
+            	printf("\n-------------------------------------------------------------------------------\n");
+            	puts("\nGracias por utilizar la aplicacion.\nEscrita y desarrollada por Mariano Forte.\n");
             	system("pause");
             	break;
             default:
             	puts("Opcion invalida\n");
             	break;
         }
-        system("cls");
+        printf("-------------------------------------------------------------------------------\n");
     }while(option != 10);
     return 0;
 }

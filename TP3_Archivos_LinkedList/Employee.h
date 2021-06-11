@@ -16,9 +16,9 @@ typedef struct
 }Employee;
 
 int employee_setLastId(int id);
-int employee_getLastId(void);
-int employee_increaseLastId(void);
-int employee_decreaseLastId(void);
+int employee_getLastId(int id);
+int employee_increaseLastId(int id);
+int employee_decreaseLastId(int id);
 
 Employee* employee_new();
 Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr, char* sueldo);
@@ -38,9 +38,9 @@ int employee_getSueldo(Employee* this,int* sueldo);
 
 void employee_showEmployee(Employee* this);
 
-int employeeSortByName(void* employeeA, void* employeeB);
-int employeeSortById(void* employeeA, void* employeeB);
-int employeeSortByWorkHours(void* employeeA, void* employeeB);
-int employeeSortBySalary(void* employeeA, void* employeeB);
+int employee_SortByName(void* employeeA, void* employeeB);
+int employee_SortById(void* employeeA, void* employeeB);
+int employee_SortByWorkHours(void* employeeA, void* employeeB);
+int employee_SortBySalary(void* employeeA, void* employeeB);
 
 #endif // employee_H_INCLUDED

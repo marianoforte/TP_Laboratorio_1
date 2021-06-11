@@ -1,22 +1,23 @@
 #include "Employee.h"
 
-static int lastId = 0;
-
 int employee_setLastId(int id){
-		lastId = id;
+	int lastId = id;
 	return lastId;
 }
 
-int employee_getLastId(void){
+int employee_getLastId(int id){
+	int lastId = id;
 	return lastId;
 }
 
-int employee_increaseLastId(void){
+int employee_increaseLastId(int id){
+	int lastId = id;
 	lastId++;
 	return lastId;
 }
 
-int employee_decreaseLastId(void){
+int employee_decreaseLastId(int id){
+	int lastId = id;
 	lastId--;
 	return lastId;
 }
@@ -43,12 +44,13 @@ Employee* employee_new()
  */
 Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr, char* sueldoStr)
 {
-    Employee* auxiliarEmpleado = employee_new();
-
+    Employee* auxiliarEmpleado;
     int id;
     int salary;
     int workedHours;
+    auxiliarEmpleado = employee_new();
     if( auxiliarEmpleado != NULL ){
+
     	if(idStr != NULL){
     		id = atoi(idStr);
     		employee_setId(auxiliarEmpleado, id);
@@ -152,7 +154,7 @@ int employee_setSueldo(Employee* this,int sueldo)
 {
     int rtn = 0;
     if(this!=NULL){
-        if(sueldo > 1000 || sueldo <90000){
+        if(sueldo > 0){
             this->sueldo = sueldo;
             rtn = 1;
         }
@@ -252,7 +254,7 @@ void employee_showEmployee(Employee* this)
 		employee_getNombre(this,nombreAuxiliar);
 		employee_getHorasTrabajadas(this,&horasAuxiliar);
 		employee_getSueldo(this,&sueldoAuxiliar);
-		printf("%5d  %10s %10d  %15.2d\n",idAuxiliar, nombreAuxiliar, horasAuxiliar, sueldoAuxiliar);
+		printf("%5d  %16s %12d  %15.2d\n",idAuxiliar, nombreAuxiliar, horasAuxiliar, sueldoAuxiliar);
 	}
 }
 
@@ -263,7 +265,7 @@ void employee_showEmployee(Employee* this)
  * \return rtn Devuelve 1 si el employeeA es igual a empleado B, devuelve -1 si el employeeA es mayor al empleado B y devuelve 1 si el employeeA es menor al empleado B
  *
  */
-int employeeSortById(void* employeeA, void* employeeB)
+int employee_SortById(void* employeeA, void* employeeB)
 {
     int rtn;
     Employee* empA;
@@ -273,13 +275,13 @@ int employeeSortById(void* employeeA, void* employeeB)
         empA = (Employee*) employeeA;
         empB = (Employee*) employeeB;
         if(empA->id == empB->id){
-        	rtn = 1;
+        	rtn = 0;
         }
         if(empA->id > empB->id){
         	rtn = -1;
         }
         if(empA->id < empB->id){
-        	rtn = 0;
+        	rtn = 1;
         }
     }
 
@@ -294,7 +296,7 @@ int employeeSortById(void* employeeA, void* employeeB)
  * \return rtn Devuelve la comparacion de los dos parametros, o devuelve 0 si falla
  *
  */
-int employeeSortByName(void* employeeA, void* employeeB)
+int employee_SortByName(void* employeeA, void* employeeB)
 {
     int rtn = 0;
     Employee* empA;
@@ -317,7 +319,7 @@ int employeeSortByName(void* employeeA, void* employeeB)
  * \return rtn Devuelve 1 si el employeeA es igual a empleado B, devuelve -1 si el employeeA es mayor al empleado B y devuelve 1 si el employeeA es menor al empleado B
  *
  */
-int employeeSortByWorkHours(void* employeeA, void* employeeB)
+int employee_SortByWorkHours(void* employeeA, void* employeeB)
 {
     int rtn;
     Employee* empA;
@@ -327,13 +329,13 @@ int employeeSortByWorkHours(void* employeeA, void* employeeB)
         empA = (Employee*) employeeA;
         empB = (Employee*) employeeB;
         if(empA->horasTrabajadas == empB->horasTrabajadas){
-        	rtn = 1;
+        	rtn = 0;
         }
         if(empA->horasTrabajadas> empB->horasTrabajadas){
         	rtn = -1;
         }
         if(empA->horasTrabajadas < empB->horasTrabajadas){
-        	rtn = 0;
+        	rtn = 1;
         }
     }
 
@@ -348,7 +350,7 @@ int employeeSortByWorkHours(void* employeeA, void* employeeB)
  * \return rtn Devuelve 1 si el employeeA es igual a empleado B, devuelve -1 si el employeeA es mayor al empleado B y devuelve 1 si el employeeA es menor al empleado B
  *
  */
-int employeeSortBySalary(void* employeeA, void* employeeB)
+int employee_SortBySalary(void* employeeA, void* employeeB)
 {
     int rtn;
     Employee* empA;
@@ -358,13 +360,13 @@ int employeeSortBySalary(void* employeeA, void* employeeB)
         empA = (Employee*) employeeA;
         empB = (Employee*) employeeB;
         if(empA->sueldo == empB->sueldo){
-        	rtn = 1;
+        	rtn = 0;
         }
         if(empA->sueldo > empB->sueldo){
         	rtn = -1;
         }
         if(empA->sueldo < empB->sueldo){
-        	rtn = 0;
+        	rtn = 1;
         }
     }
 
