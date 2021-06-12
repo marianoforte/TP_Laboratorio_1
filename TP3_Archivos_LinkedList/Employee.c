@@ -22,28 +22,11 @@ int employee_decreaseLastId(int id){
 	return lastId;
 }
 
-/** \brief Almacena un espacio en memoria dinamica para un empleado
- *
- * \param -
- * \param -
- * \return allocated memmory for the new employee
- */
-Employee* employee_new()
-{
+Employee* employee_new(){
     return (Employee*)calloc(1, sizeof(Employee));
 }
 
-/** \brief Creo nuevos empleados con parametros
- *
- * \param char* idStr Id generado
- * \param char* nombreStr Nombre generado
- * \param char* horasTrabajadasStr Horas trabajadas generadas
- * \param char* sueldoStr Sueldo
- * \return retorna la direccion del empleado
- *
- */
-Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr, char* sueldoStr)
-{
+Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr, char* sueldoStr){
     Employee* auxiliarEmpleado;
     int id;
     int salary;
@@ -71,30 +54,13 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
 
 }
 
-
-/** \brief Libera espacio de un empleado eliminado
- *
- * \param Employee* this Puntero del array de empleados
- * \return -
- *
- */
-void employee_delete(Employee* this)
-{   ///LIBERA ESPACIO EN CADA EMPLEADO
+void employee_delete(Employee* this){
     if(this!=NULL){
     	free(this);
     }
 }
 
-
-/** \brief Valida el id
- *
- * \param Employee* this Puntero del array de empleados
- * \param int id recibe una cantidad de id
- * \return rtn, si esta bien es 1, si esta mal es 0
- *
- */
-int employee_setId(Employee* this,int id)
-{
+int employee_setId(Employee* this,int id){
     int rtn = 0;
     if(this!=NULL && id>0){
             this->id = id;
@@ -103,16 +69,7 @@ int employee_setId(Employee* this,int id)
     return rtn;
 }
 
-
-/** \brief Valida el Nombre
- *
- * \param Employee* this Puntero del array de empleados
- * \param char* nombre recibe un nombre
- * \return rtn, si esta bien es 1, si esta mal es 0
- *
- */
-int employee_setNombre(Employee* this,char* nombre) ///MODIFICAR
-{
+int employee_setNombre(Employee* this,char* nombre){
     int rtn = 0;
     if(this!=NULL  && strlen(nombre) != 0){
         strcpy(this->nombre, nombre);
@@ -121,17 +78,7 @@ int employee_setNombre(Employee* this,char* nombre) ///MODIFICAR
     return rtn;
 }
 
-
-/** \brief Valida las horas de trabajo
- *
- * \param Employee* this Puntero del array de empleados
- * \param int horasTrabajadas Recibe una cantidad de horas de trabajo
- * \return rtn, si esta bien es 1, si esta mal es 0
- *
- */
-
-int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas)
-{
+int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas){
     int rtn = 0;
     if(this!=NULL){
         if(horasTrabajadas > 0 || horasTrabajadas <24){
@@ -142,16 +89,7 @@ int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas)
     return rtn;
 }
 
-
-/** \brief Valida el sueldo
- *
- * \param Employee* this Puntero del array de empleados
- * \param float sueldo Recibe una cantidad de sueldo
- * \return rtn, si esta bien es 1, si esta mal es 0
- *
- */
-int employee_setSueldo(Employee* this,int sueldo)
-{
+int employee_setSueldo(Employee* this,int sueldo){
     int rtn = 0;
     if(this!=NULL){
         if(sueldo > 0){
@@ -162,35 +100,7 @@ int employee_setSueldo(Employee* this,int sueldo)
     return rtn;
 }
 
-
-/** \brief Me escribe el parametro del nombre en el argumento pasado
- *
- * \param Employee* this Puntero del array de empleados
- * \param char* nombre Recibe un nombre
- * \return rtn, si esta bien es 1, si esta mal es 0
- *
- */
-int employee_getNombre(Employee* this,char* nombre)
-{
-    int rtn = 0;
-    if(this!=NULL && nombre != NULL){
-        strcpy ( nombre, this->nombre); //
-        rtn = 1;
-    }
-    return rtn;
-}
-
-
-/** \brief Me escribe el parametro del id en el argumento pasado
- *
- * \param Employee* this Puntero del array de empleados
- * \param int* id recibe un puntero al id
- * \return rtn, si esta bien es 1, si esta mal es 0
- *
- */
-
-int employee_getId(Employee* this,int* id)
-{
+int employee_getId(Employee* this,int* id){
     int rtn = 0;
     if(this!=NULL && id != NULL){
         *id = this->id;
@@ -199,15 +109,16 @@ int employee_getId(Employee* this,int* id)
     return rtn;
 }
 
-/** \brief Me escribe el parametro de las horas trabajadas en el argumento pasado
- *
- * \param Employee* this Puntero del array de empleados
- * \param int* horasTrabajadas Recibe un puntero a las horas trabajadas
- * \return retorno, si esta bien es 1, si esta mal es 0
- *
- */
-int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas)
-{
+int employee_getNombre(Employee* this,char* nombre){
+    int rtn = 0;
+    if(this!=NULL && nombre != NULL){
+        strcpy(nombre, this->nombre); //
+        rtn = 1;
+    }
+    return rtn;
+}
+
+int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas){
     int rtn = 0;
     if(this!=NULL && horasTrabajadas != NULL){
         *horasTrabajadas = this->horasTrabajadas;
@@ -216,16 +127,7 @@ int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas)
     return rtn;
 }
 
-
-/** \brief Me escribe el parametro del sueldo en el argumento pasado
- *
- * \param Employee* this Puntero del array de empleados
- * \param float* sueldo recibe un puntero del sueldo
- * \return rtn, si esta bien es 1, si esta mal es 0
- *
- */
-int employee_getSueldo(Employee* this,int* sueldo)
-{
+int employee_getSueldo(Employee* this,int* sueldo){
     int rtn = 0;
 
     if(this!=NULL && sueldo != NULL){
@@ -235,15 +137,7 @@ int employee_getSueldo(Employee* this,int* sueldo)
     return rtn;
 }
 
-
-/** \brief Valida el id
- *
- * \param Employee* empleado Puntero del array de empleados
- * \return -
- *
- */
-void employee_showEmployee(Employee* this)
-{
+void employee_showEmployee(Employee* this){
 	if(this != NULL ){
 		int idAuxiliar;
 		char nombreAuxiliar[50];
@@ -258,15 +152,7 @@ void employee_showEmployee(Employee* this)
 	}
 }
 
-/** \brief Compara dos parametros que serian int (por el id)
- *
- * \param void* employeeA
- * \param void* employeeB
- * \return rtn Devuelve 1 si el employeeA es igual a empleado B, devuelve -1 si el employeeA es mayor al empleado B y devuelve 1 si el employeeA es menor al empleado B
- *
- */
-int employee_SortById(void* employeeA, void* employeeB)
-{
+int employee_SortById(void* employeeA, void* employeeB){
     int rtn;
     Employee* empA;
     Employee*empB;
@@ -288,16 +174,7 @@ int employee_SortById(void* employeeA, void* employeeB)
     return rtn;
 }
 
-
-/** \brief Compara dos parametros que serian string (por el nombre)
- *
- * \param void* employeeA
- * \param void* employeeB
- * \return rtn Devuelve la comparacion de los dos parametros, o devuelve 0 si falla
- *
- */
-int employee_SortByName(void* employeeA, void* employeeB)
-{
+int employee_SortByName(void* employeeA, void* employeeB){
     int rtn = 0;
     Employee* empA;
     Employee* empB;
@@ -311,16 +188,7 @@ int employee_SortByName(void* employeeA, void* employeeB)
     return rtn;
 }
 
-
-/** \brief Compara dos parametros que serian int (por las horas trabajadas)
- *
- * \param void* employeeA
- * \param void* employeeB
- * \return rtn Devuelve 1 si el employeeA es igual a empleado B, devuelve -1 si el employeeA es mayor al empleado B y devuelve 1 si el employeeA es menor al empleado B
- *
- */
-int employee_SortByWorkHours(void* employeeA, void* employeeB)
-{
+int employee_SortByWorkHours(void* employeeA, void* employeeB){
     int rtn;
     Employee* empA;
     Employee*empB;
@@ -342,16 +210,7 @@ int employee_SortByWorkHours(void* employeeA, void* employeeB)
     return rtn;
 }
 
-
-/** \brief Compara dos parametros que serian float (por el salario)
- *
- * \param void* employeeA
- * \param void* employeeB
- * \return rtn Devuelve 1 si el employeeA es igual a empleado B, devuelve -1 si el employeeA es mayor al empleado B y devuelve 1 si el employeeA es menor al empleado B
- *
- */
-int employee_SortBySalary(void* employeeA, void* employeeB)
-{
+int employee_SortBySalary(void* employeeA, void* employeeB){
     int rtn;
     Employee* empA;
     Employee*empB;
@@ -372,5 +231,3 @@ int employee_SortBySalary(void* employeeA, void* employeeB)
 
     return rtn;
 }
-
-

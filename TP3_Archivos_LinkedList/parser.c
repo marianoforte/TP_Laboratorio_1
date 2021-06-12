@@ -1,7 +1,6 @@
 #include "parser.h"
 
-int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
-{
+int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee){
 	int r;
 	int rtn = 0;
 	int counter = 0;
@@ -14,7 +13,6 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
 			fscanf(pFile, "%[^,],%[^,],%[^,],%[^\n]\n", idAux, nameAux,workedHoursAux, salaryAux);
 			if(r==4){
 				auxEmployee = employee_newParametros(idAux ,nameAux, workedHoursAux, salaryAux);
-
 				ll_add(pArrayListEmployee, auxEmployee);
 				counter++;
 			}
@@ -25,22 +23,17 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
     return rtn;
 }
 
-int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
-{
+int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee){
 	int rtn = 0;
 	int counter = 0;
 	Employee* empleadoAux;
 
-	//fread(&empleadoAux, sizeof(Employee), 1, pFile); // Hago una falsa lectura para quitar la cabecera de archivo
-
 	if(pFile != NULL && pArrayListEmployee != NULL){
-
 		while(!feof(pFile)){
 			empleadoAux = employee_new();
 			fread(empleadoAux, sizeof(Employee), 1, pFile);
 			counter++; //Cuento los empleados que se cargaron
 			ll_add(pArrayListEmployee, empleadoAux); //Los añado
-
 		}
 		rtn = counter;
 		printf("\nSe cargaron %d empleados a la lista con exito !\n\n", counter);

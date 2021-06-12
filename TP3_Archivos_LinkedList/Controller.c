@@ -1,14 +1,6 @@
 #include "Controller.h"
 
-/** \brief Carga los datos de los empleados desde el archivo data.csv (modo texto).
- *
- * \param path char* - Recibe el puntero al archivo
- * \param pArrayListEmployee LinkedList* - Recibe el puntero a la linkedlist
- * \return int
- *
- */
-int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
-{
+int controller_loadFromText(char* path , LinkedList* pArrayListEmployee){
 	FILE* pFile;
 	int rtn = 0;
 
@@ -25,15 +17,7 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
     return rtn;
 }
 
-/** \brief Carga los datos de los empleados desde el archivo data.csv (modo binario).
- *
- * \param path char* - Recibe el puntero al archivo
- * \param pArrayListEmployee LinkedList* - Recibe el puntero a la linkedlist
- * \return int
- *
- */
-int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
-{
+int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee){
 	FILE* pFile;
 	int rtn = 0;
 
@@ -50,14 +34,7 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 	return rtn;
 }
 
-/** \brief Listar empleados
- *
- * \param pArrayListEmployee LinkedList* - Recibe el puntero a la linkedlist
- * \return int
- *
- */
-int controller_ListEmployee(LinkedList* pArrayListEmployee)
-{
+int controller_ListEmployee(LinkedList* pArrayListEmployee){
 	Employee* auxEmployee;
 	int listState;
 	int rtn = -1;
@@ -83,15 +60,7 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
     return rtn;
 }
 
-/** \brief Alta de empleados
- *
- * \param pArrayListEmployee LinkedList* - Recibe el puntero a la linkedlist
- * \param id int* - Recibe la variable local de la ultima id desde el main
- * \return int
- *
- */
-int controller_addEmployee(LinkedList* pArrayListEmployee, int* id)
-{
+int controller_addEmployee(LinkedList* pArrayListEmployee, int* id){
 	int rtn = 0;
 	Employee* newEmployee;
 	char idAux[50], nameAux[50], workedHoursAux[50], salaryAux[50];
@@ -114,14 +83,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee, int* id)
 	return rtn;
 }
 
-/** \brief Modificar datos de empleado
- *
- * \param pArrayListEmployee LinkedList* - Recibe el puntero a la linkedlist
- * \return int
- *
- */
-int controller_editEmployee(LinkedList* pArrayListEmployee)
-{
+int controller_editEmployee(LinkedList* pArrayListEmployee){
 	Employee* auxEmployee;
 	int rtn = -1;
 	int listLength ;
@@ -220,14 +182,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 	return rtn;
 }
 
-/** \brief Baja de empleado
- *
- * \param pArrayListEmployee LinkedList* - Recibe la linkedlist
- * \return int
- *
- */
-int controller_removeEmployee(LinkedList* pArrayListEmployee)
-{
+int controller_removeEmployee(LinkedList* pArrayListEmployee){
 	Employee* auxEmployee;
 	int listLength, auxId, option, confirmation;
 	int listState = ll_isEmpty(pArrayListEmployee);
@@ -292,16 +247,7 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 	return rtn;
 }
 
-
-
-/** \brief Ordenar empleados
- *
- * \param pArrayListEmployee LinkedList* - Recibe el puntero a la linkedlist
- * \return int
- *
- */
-int controller_sortEmployee(LinkedList* pArrayListEmployee)
-{
+int controller_sortEmployee(LinkedList* pArrayListEmployee){
     int rtn = -1;
     int listState = ll_isEmpty(pArrayListEmployee);
     int option, sortOption, sortCriteria;
@@ -373,15 +319,7 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
     return rtn;
 }
 
-/** \brief Guarda los datos de los empleados en el archivo data.csv (modo texto).
- *
- * \param path char* - Recibe el puntero al archivo
- * \param pArrayListEmployee LinkedList* - Recibe el puntero a la linkedlist
- * \return int
- *
- */
-int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
-{
+int controller_saveAsText(char* path, LinkedList* pArrayListEmployee){
     int idAuxiliar;
 	char nombreAuxiliar[50];
 	int horasAuxiliar;
@@ -411,15 +349,7 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
     return rtn;
 }
 
-/** \brief Guarda los datos de los empleados en el archivo data.csv (modo binario).
- *
- * \param path char* - Recibe el puntero al archivo
- * \param pArrayListEmployee LinkedList* - Recibe el puntero a la linkedlist
- * \return int
- *
- */
-int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
-{
+int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee){
     int rtn = 0;
     int listLength;
     Employee* pAuxEmployee;
@@ -440,16 +370,10 @@ int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
     return rtn;
 }
 
-/** \brief Guarda los datos de los empleados en el archivo data.csv (modo binario).
- *
- * \param path char* - Recibe el puntero al archivo
- * \return int
- *
- */
 int controller_loadLastId(char* path){
 	FILE* pFile;
 	int id = -1;
-	int rtn = 0;
+	int rtn = -1;
 
 	if(path != NULL){
 		pFile = fopen(path, "rb");
@@ -463,15 +387,9 @@ int controller_loadLastId(char* path){
 	return rtn;
 }
 
-/** \brief Guarda los datos de los empleados en el archivo data.csv (modo binario).
- *
- * \param path char* - Recibe el puntero al archivo
- * \return int
- *
- */
 int controller_saveLastId(char* path, int* id){
 	FILE* pFile;
-	int rtn = 0;
+	int rtn = -1;
 
 	if(path != NULL){
 		pFile = fopen(path, "wb");

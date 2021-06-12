@@ -7,21 +7,20 @@
 /****************************************************
     Menu:
      1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).
-     2. Cargar los datos de los empleados desde el archivo data.csv (modo binario).
+     2. Cargar los datos de los empleados desde el archivo data.dat (modo binario).
      3. Alta de empleado
      4. Modificar datos de empleado
      5. Baja de empleado
      6. Listar empleados
      7. Ordenar empleados
      8. Guardar los datos de los empleados en el archivo data.csv (modo texto).
-     9. Guardar los datos de los empleados en el archivo data.csv (modo binario).
+     9. Guardar los datos de los empleados en el archivo data.dat (modo binario).
     10. Salir
 *****************************************************/
 
 
 
-int main()
-{
+int main(){
 	setbuf(stdout,NULL);
     int option, id;
     LinkedList* listaEmpleados = ll_newLinkedList();
@@ -29,14 +28,14 @@ int main()
     do{
     	puts("\n\t\t ******MENU DE OPERACIONES******\n");
     	puts("1. Cargar los datos de los empleados desde el archivo data.csv (modo texto)");
-    	puts("2. Cargar los datos de los empleados desde el archivo data.csv (modo binario)");
+    	puts("2. Cargar los datos de los empleados desde el archivo data.dat (modo binario)");
     	puts("3. Alta de empleado");
     	puts("4. Modificar datos de empleado");
     	puts("5. Baja de empleado");
     	puts("6. Listar empleados");
     	puts("7. Ordenar empleados");
     	puts("8. Guardar los datos de los empleados en el archivo data.csv (modo texto)");
-    	puts("9. Guardar los datos de los empleados en el archivo data.csv (modo binario)");
+    	puts("9. Guardar los datos de los empleados en el archivo data.dat (modo binario)");
     	puts("10. Salir");
     	printf("\nOpcion elegida: ");
     	scanf("%d", &option);
