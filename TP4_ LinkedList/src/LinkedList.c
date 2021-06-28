@@ -336,3 +336,64 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order){
 	}
 	return returnAux;
 }
+
+int ll_count(LinkedList* this, int (*fn)(void* element)){
+    int counter = -1;
+
+    if(this!=NULL){
+    	int i;
+    	counter = 0;
+    	void* auxElement;
+    	int len = ll_len(this);
+    	for(i=0;i<len;i++){
+    		auxElement = ll_get (this, i);
+    		int count = fn(auxElement);
+    		if(count){
+    			counter++;
+    		}
+        }
+    }
+
+    return counter;
+}
+
+int ll_map (LinkedList* this, int (*pFunc)(void*)){
+	int rtn = -1;
+
+	if(this != NULL && pFunc != NULL){
+		int i;
+		void* auxElement;
+		int len = ll_len(this);
+		 for(i=0;i<len;i++){
+			 auxElement =	ll_get(this, i);
+			 pFunc(auxElement);
+		 }
+		 rtn = 1;
+	}
+
+	return rtn;
+}
+
+LinkedList* ll_filter(LinkedList* this, int (*fn)(void* element, void* criterio), void* criterioParam){
+	LinkedList* linkedListRetorno = NULL;
+
+	if (this != NULL && fn != NULL && criterioParam != NULL){
+		int i, add;
+		void* auxElement;
+		LinkedList* filteredLinkedList = ll_newLinkedList();
+
+		if(filteredLinkedList != NULL){
+			int len = ll_len(this);
+			for(i=0;i<len;i++){
+				auxElement =	ll_get(this, i);
+				add = fn(auxElement, criterioParam);
+				if(add){
+					ll_add(filteredLinkedList, auxElement);
+				}
+			}
+			linkedListRetorno = filteredLinkedList;
+		}
+	}
+
+	return linkedListRetorno;
+}

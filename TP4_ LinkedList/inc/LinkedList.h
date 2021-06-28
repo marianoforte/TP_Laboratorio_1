@@ -219,3 +219,28 @@ LinkedList* ll_clone(LinkedList* this);
                                 ( 0) Si ok
  */
 int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order);
+
+/** \brief Recorre una Linked List y cuenta que elementos cumplen un criterio dado por funcion
+ * \param pList LinkedList* Puntero a la lista
+ * \param pFunc (*pFunc) Puntero a la funcion criterio encargada de devolver 1 si se debe contar o 0 si no se debe contar
+ * \return int Retorna  (-1) Error: si el puntero a la listas es NULL
+                        (>= 0) Cantidad de elementos que cumplen el criterio de la funcion
+ */
+int ll_count(LinkedList* this, int (*fn)(void* element));
+
+/** \brief Recorre una Linked List y ejecuta una funcion para cada elemento de la lista
+ * \param pList LinkedList* Puntero a la lista
+ * \param pFunc (*pFunc) Puntero a la funcion que se le aplicara a cada elemento
+ * \return int Retorna  (-1) Error: si el puntero a la listas es NULL
+                        ( 0) Si ok
+ */
+int ll_map (LinkedList* this, int (*pFunc)(void*));
+
+/** \brief Recorre una Linked List y pasa a otra linked list los elementos que cumplen el criterio de la funcion
+ * \param pList LinkedList* Puntero a la lista
+ * \param pFunc (*pFunc) Puntero a la funcion criterio que indica con 1 si se debe agregar a la nueva lista o 0 sik no se debe agregar a la nueva lista
+ * \param void* Puntero al dato con el que se filtrará la linked list
+ * \return int Retorna  (NULL) Si no se logra retornar ninguna lista
+                        (LinkedList*) Un puntero a la linked list con loe elementos filtrados
+ */
+LinkedList* ll_filter(LinkedList* this, int (*fn)(void* element, void* criterio), void* criterioParam);

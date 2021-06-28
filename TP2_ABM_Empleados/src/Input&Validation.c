@@ -26,9 +26,9 @@ sEmployee getEmployee(sEmployee employeeData)
     fflush(stdin);
     printf("\nIngrese el salario: ");
     getAndValidateIntAndFloatNumber("%f",&employeeData.salary);
-    while(employeeData.salary < 1){
+    while(employeeData.salary < 0){
         printf("\nEl salario debe ser un numero mayor a cero. Ingrese nuevamente el salario: ");
-        scanf("%f",&employeeData.salary);
+        getAndValidateIntAndFloatNumber("%f",&employeeData.salary);
     }
 
     fflush(stdin);
