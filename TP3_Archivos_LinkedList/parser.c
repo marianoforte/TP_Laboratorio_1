@@ -1,42 +1,48 @@
 #include "parser.h"
 
 int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee){
-	int r;
-	int rtn = 0;
-	int counter = 0;
-	char idAux[50], nameAux[50], workedHoursAux[50], salaryAux[50];
-	Employee* auxEmployee = employee_new();
+    int elementsAdded = -1;
+    int returnAux;
+    char parsedId[9];
+    char parsedHours[5];
+    char parsedSalary[9];
+    char parsedName[128];
+    Employee* new;
 
-	if(pFile != NULL && pArrayListEmployee != NULL){
-		r = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",idAux,nameAux,workedHoursAux,salaryAux); // Hago una falsa lectura para quitar la cabecera de archivo y guardo la cantidad de variables que encontró el fscanf
-		while(!feof(pFile)){
-			fscanf(pFile, "%[^,],%[^,],%[^,],%[^\n]\n", idAux, nameAux,workedHoursAux, salaryAux);
-			if(r==4){
-				auxEmployee = employee_newParametros(idAux ,nameAux, workedHoursAux, salaryAux);
-				ll_add(pArrayListEmployee, auxEmployee);
-				counter++;
-			}
-		}
-		rtn = counter;
-		printf("\nSe cargaron %d empleados a la lista con exito!\n\n", counter);
-	}
-    return rtn;
+    if(pFile != NULL && pArrayListEmployee != NULL){
+        elementsAdded = 0;
+        fscanf(pFile, "%[^,],%[^,],%[^,],%[^\n]\n", parsedId, parsedName, parsedHours, parsedSalary);
+        while(!feof(pFile)){
+            returnAux = fscanf(pFile, "%[^,],%[^,],%[^,],%[^\n]\n", parsedId, parsedName, parsedHours, parsedSalary);
+            if(returnAux == 4){
+                new = employee_newParametros(parsedId, parsedName, parsedHours, parsedSalary);
+                if(new != NULL && !ll_contains(pArrayListEmployee, new)){
+                    ll_add(pArrayListEmployee, new);
+                    elementsAdded++;
+                }
+            }
+        }
+    }
+    return elementsAdded;
 }
 
 int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee){
-	int rtn = 0;
-	int counter = 0;
-	Employee* empleadoAux;
+    int elementsAdded = -1;
+    int returnAux;
+    Employee* new;
 
-	if(pFile != NULL && pArrayListEmployee != NULL){
-		while(!feof(pFile)){
-			empleadoAux = employee_new();
-			fread(empleadoAux, sizeof(Employee), 1, pFile);
-			counter++; //Cuento los empleados que se cargaron
-			ll_add(pArrayListEmployee, empleadoAux); //Los añado
-		}
-		rtn = counter;
-		printf("\nSe cargaron %d empleados a la lista con exito !\n\n", counter);
-	}
-	return rtn;
+    if(pFile != NULL && pArrayListEmployee != NULL){
+        elementsAdded = 0;
+        while(!feof(pFile)){
+            new = employee_new();
+            if(new != NULL){
+                returnAux = fread(new, sizeof(Employee), 1, pFile);
+                if(returnAux == 1 && !ll_contains(pArrayListEmployee, new)){
+                    ll_add(pArrayListEmployee, new);
+                    elementsAdded++;
+                }
+            }
+        }
+    }
+    return elementsAdded;
 }

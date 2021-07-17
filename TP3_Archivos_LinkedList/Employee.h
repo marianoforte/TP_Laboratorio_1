@@ -27,21 +27,21 @@ int employee_setLastId(int id);
  * \param int id - Recibe la variable local donde está almacenado el último ID
  * \return int - Retorna el último ID obtenido
  */
-int employee_getLastId(int id);
+int employee_getLastId();
 
 /** \brief Incrementa el último ID
  *
  * \param int id - Recibe la variable local donde está almacenado el último ID
  * \return int - Retorna el último ID incrementado
  */
-int employee_increaseLastId(int id);
+int employee_increaseLastId();
 
 /** \brief Decrementa el último ID
  *
  * \param int id - Recibe la variable local donde está almacenado el último ID
  * \return int - Retorna el último ID decrementado
  */
-int employee_decreaseLastId(int id);
+int employee_decreaseLastId();
 
 /** \brief Almacena un espacio en memoria dinamica para un empleado
  *

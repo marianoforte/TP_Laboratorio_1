@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "Input.h"
 #include "LinkedList.h"
 #include "Employee.h"
 #include "parser.h"
@@ -39,7 +40,7 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee);
  * \return int Retorna 1 si el alta fue exitosa, 0 si no lo fue
  *
  */
-int controller_addEmployee(LinkedList* pArrayListEmployee, int* id);
+int controller_addEmployee(LinkedList* pArrayListEmployee);
 
 /** \brief Modificar datos de un empleado
  *
