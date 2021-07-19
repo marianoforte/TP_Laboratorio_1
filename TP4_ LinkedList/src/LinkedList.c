@@ -374,10 +374,10 @@ int ll_map (LinkedList* this, int (*pFunc)(void*)){
 	return rtn;
 }
 
-LinkedList* ll_filter(LinkedList* this, int (*fn)(void* element, void* criterio), void* criterioParam){
-	LinkedList* linkedListRetorno = NULL;
+LinkedList* ll_filter(LinkedList* this, int (*fn)(void* element, void* criteria), void* criteriaParam){
+	LinkedList* rtnLinkedList = NULL;
 
-	if (this != NULL && fn != NULL && criterioParam != NULL){
+	if (this != NULL && fn != NULL && criteriaParam != NULL){
 		int i, add;
 		void* auxElement;
 		LinkedList* filteredLinkedList = ll_newLinkedList();
@@ -386,14 +386,14 @@ LinkedList* ll_filter(LinkedList* this, int (*fn)(void* element, void* criterio)
 			int len = ll_len(this);
 			for(i=0;i<len;i++){
 				auxElement =	ll_get(this, i);
-				add = fn(auxElement, criterioParam);
+				add = fn(auxElement, criteriaParam);
 				if(add){
 					ll_add(filteredLinkedList, auxElement);
 				}
 			}
-			linkedListRetorno = filteredLinkedList;
+			rtnLinkedList = filteredLinkedList;
 		}
 	}
 
-	return linkedListRetorno;
+	return rtnLinkedList;
 }
